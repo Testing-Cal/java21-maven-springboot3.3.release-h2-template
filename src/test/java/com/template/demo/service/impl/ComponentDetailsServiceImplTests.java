@@ -7,25 +7,24 @@ import java.util.List;
 import com.template.demo.bean.ComponentDetailsBean;
 import com.template.demo.bean.PairedComponentDetailsBean;
 import com.template.demo.entity.ComponentDetailsEntity;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.template.demo.repository.ComponentDetailsRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-/**
- * @author nsingotam
- */
-@RunWith(SpringRunner.class)
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@SpringBootTest
 public class ComponentDetailsServiceImplTests {
 
     private Gson gson;
@@ -36,7 +35,7 @@ public class ComponentDetailsServiceImplTests {
     @InjectMocks
     private ComponentDetailsServiceImpl componentDetailsService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         gson = new GsonBuilder().serializeNulls().create();
@@ -71,14 +70,14 @@ public class ComponentDetailsServiceImplTests {
     public void createComponentDetails_Success() throws Exception {
         Mockito.when(this.componentDetailsRepository.findByComponentName(Mockito.any())).thenReturn(null);
         Mockito.when(this.componentDetailsRepository.save(Mockito.any())).thenReturn(new ComponentDetailsEntity());
-        Assert.assertEquals(true, this.componentDetailsService.createComponentDetails(Mockito.any()));
+        assertEquals(true, this.componentDetailsService.createComponentDetails(Mockito.any()));
     }
 
     @Test
     public void createExistingComponentDetails_Success() throws Exception {
         Mockito.when(this.componentDetailsRepository.findByComponentName(Mockito.any())).thenReturn(new ComponentDetailsEntity());
         Mockito.when(this.componentDetailsRepository.save(Mockito.any())).thenReturn(new ComponentDetailsEntity());
-        Assert.assertEquals(true, this.componentDetailsService.createComponentDetails(Mockito.any()));
+        assertEquals(true, this.componentDetailsService.createComponentDetails(Mockito.any()));
     }
 
     @Test
@@ -86,7 +85,7 @@ public class ComponentDetailsServiceImplTests {
         Mockito.when(this.componentDetailsRepository.findByComponentName(Mockito.any())).thenReturn(new ComponentDetailsEntity());
         Mockito.when(this.componentDetailsRepository.save(Mockito.any())).thenReturn(new ComponentDetailsEntity());
         this.componentDetailsService.regenerateComponentIdentifier();
-        Assert.assertTrue(true);
+        assertTrue(true);
     }
 
 }

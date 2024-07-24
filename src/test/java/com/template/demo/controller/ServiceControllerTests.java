@@ -3,19 +3,18 @@ package com.template.demo.controller;
 import com.template.demo.bean.ComponentDetailsBean;
 import com.template.demo.bean.PairedComponentDetailsBean;
 import com.template.demo.service.ComponentDetailsService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.skyscreamer.jsonassert.JSONAssert;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.BeforeEach;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -23,10 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author nsingotam
- */
-@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ServiceControllerTests {
 
     private Gson gson;
@@ -39,7 +35,7 @@ public class ServiceControllerTests {
     @InjectMocks
     private ServiceController serviceController;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(this.serviceController).build();
@@ -47,7 +43,7 @@ public class ServiceControllerTests {
     }
 
     private PairedComponentDetailsBean mockPairedComponentDetails() {
-        final List<ComponentDetailsBean> componentDetails = new ArrayList<ComponentDetailsBean>(1);
+        final List<ComponentDetailsBean> componentDetails = new ArrayList<>(1);
         final PairedComponentDetailsBean pairedComponentDetails = new PairedComponentDetailsBean("componentName", "componentIdentifier");
         pairedComponentDetails.setPairedComponentDetails(componentDetails);
         return pairedComponentDetails;
