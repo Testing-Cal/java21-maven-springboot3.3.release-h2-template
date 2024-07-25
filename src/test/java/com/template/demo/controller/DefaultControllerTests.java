@@ -44,7 +44,7 @@ public class DefaultControllerTests {
     }
 
     private String mockDefaultResponse() {
-        return title + "Hello! You have successfully set up your Java21 Maven SpringBoot:3.3.1 environment by using the Lazsa template. You're all set to start coding.";
+        return title + "Hello! You have successfully set up your Java21 Maven SpringBoot:3.3 environment by using the Lazsa template. You're all set to start coding.";
     }
 
     @Test
