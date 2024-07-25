@@ -24,11 +24,20 @@ updateStrategy:
 
 ingress:
   enabled: false
-  className: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+  ingressClass: nginx
+  #annotations:
   paths:
     path: /RELEASE_NAME
+  albAnnotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  #albExtraAnnotations:
+  controllerType: nginx
+  nginxAnnotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  #nginxExtraAnnotations:
 
 
 context: CONTEXT_PATH

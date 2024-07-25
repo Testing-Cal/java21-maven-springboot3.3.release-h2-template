@@ -52,7 +52,7 @@
 		<sonar.surefire.reportsPath>${project.basedir}/target/surefire-reports</sonar.surefire.reportsPath>
 		<sonar.language>java</sonar.language>
 		<sonar.coverage.exclusions>**/bean/**/*,**/entity/**/*,**/DemoProjectApplication.java</sonar.coverage.exclusions>
-
+	
 		<start-class>com.template.demo.DemoProjectApplication</start-class>
 		<minLineCoverage>0.0</minLineCoverage>
 	</properties>
