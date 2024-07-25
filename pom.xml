@@ -32,7 +32,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/> 
 	</parent>
 	<groupId>com.template</groupId>
 	<artifactId>demo</artifactId>
@@ -52,7 +52,7 @@
 		<sonar.surefire.reportsPath>${project.basedir}/target/surefire-reports</sonar.surefire.reportsPath>
 		<sonar.language>java</sonar.language>
 		<sonar.coverage.exclusions>**/bean/**/*,**/entity/**/*,**/DemoProjectApplication.java</sonar.coverage.exclusions>
-		<!-- The main class to start by executing "java -jar" -->
+
 		<start-class>com.template.demo.DemoProjectApplication</start-class>
 		<minLineCoverage>0.0</minLineCoverage>
 	</properties>
@@ -146,10 +146,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
-				<!--				<version>3.8.0</version>-->
-				<!--				<configuration>-->
-				<!--&lt;!&ndash;					<maven.compiler.release>15</maven.compiler.release>&ndash;&gt;-->
-				<!--				</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
