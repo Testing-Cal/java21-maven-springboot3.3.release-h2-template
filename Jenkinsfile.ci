@@ -145,7 +145,7 @@ pipeline {
                         if ("${list[i]}" == "'UnitTests'") {
                             stage('Unit Tests') {
                                 sh """
-                                docker run --rm -v "$WORKSPACE":/usr/src/mymaven -w /usr/src/mymaven $JAVA_MVN_IMAGE_VERSION ./mvnw test --batch-mode
+                                docker run --rm -v "$WORKSPACE":/opt/repo -w /opt/repo $JAVA_MVN_IMAGE_VERSION ./mvnw test --batch-mode
                                 """
                             }
                         }
@@ -172,7 +172,7 @@ pipeline {
                             stage('Build') {
                                 script {
                                     sh """
-                                       docker run --rm -v "$WORKSPACE":/usr/src/mymaven -w /usr/src/mymaven $JAVA_MVN_IMAGE_VERSION ./mvnw install -Dmaven.test.skip=true
+                                       docker run --rm -v "$WORKSPACE":/opt/repo -w /opt/repo $JAVA_MVN_IMAGE_VERSION ./mvnw install -Dmaven.test.skip=true
                                        sudo chown -R `id -u`:`id -g` "$WORKSPACE"
                                     """
                                 }
