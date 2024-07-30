@@ -311,7 +311,7 @@ pipeline {
                                 print(list[i])
                                 // stage details here
                                 sh """
-                                    docker run --rm -v "$WORKSPACE":/opt -w /opt $JAVA_MVN_IMAGE_VERSION ./mvnw test --batch-mode
+                                    docker run --rm -v "$WORKSPACE":/opt/repo -w /opt/repo $JAVA_MVN_IMAGE_VERSION ./mvnw test --batch-mode
                                 """
                             }
                         } else if ("${list[i]}" == "'SonarQubeScan'" && env.ACTION == 'DEPLOY' && stage_flag['sonarScan']) {
@@ -367,7 +367,7 @@ pipeline {
                                 // stage details here
                                 echo "echoed BUILD_TAG--- $BUILD_TAG"
                                 sh """
-                                    docker run --rm -v "$WORKSPACE":/usr/src/mymaven -w /usr/src/mymaven $JAVA_MVN_IMAGE_VERSION ./mvnw clean install -Dmaven.test.skip=true
+                                    docker run --rm -v "$WORKSPACE":/opt/repo -w /opt/repo $JAVA_MVN_IMAGE_VERSION ./mvnw clean install -Dmaven.test.skip=true
                                     sudo chown -R `id -u`:`id -g` "$WORKSPACE" 
                                 """
                             }
