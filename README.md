@@ -1,2 +1,1 @@
-# java21-maven-springboot3.3.release-h2-template
-
+# java21-maven-springboot3.3
