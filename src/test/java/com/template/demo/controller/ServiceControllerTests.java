@@ -37,7 +37,7 @@ public class ServiceControllerTests {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(this.serviceController).build();
         gson = new GsonBuilder().serializeNulls().create();
     }

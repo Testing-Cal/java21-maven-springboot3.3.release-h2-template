@@ -34,7 +34,7 @@ public class DefaultControllerTests {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(this.defaultController).build();
         gson = new GsonBuilder().serializeNulls().create();
     }

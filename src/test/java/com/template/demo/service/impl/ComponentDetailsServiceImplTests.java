@@ -37,7 +37,7 @@ public class ComponentDetailsServiceImplTests {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         gson = new GsonBuilder().serializeNulls().create();
     }
 
