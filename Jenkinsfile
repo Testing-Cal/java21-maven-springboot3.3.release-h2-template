@@ -202,7 +202,7 @@ pipeline {
         REGISTRY_URL = "${DOCKER_REPO_URL}"
         ACTION = "${ACTION}"
         DEPLOYMENT_TYPE = "${DEPLOYMENT_TYPE == "" ? "EC2" : DEPLOYMENT_TYPE}"
-\        KUBE_SECRET = "${KUBE_SECRET}"
+        KUBE_SECRET = "${KUBE_SECRET}"
         CHROME_BIN = "/usr/bin/google-chrome"
         ARTIFACTORY = "${ARTIFACTORY == "" ? "ECR" : ARTIFACTORY}"
         ARTIFACTORY_CREDENTIALS = "${ARTIFACTORY_CREDENTIAL_ID}"
